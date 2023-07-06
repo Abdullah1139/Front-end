@@ -1,0 +1,20 @@
+.Home{
+    margin-top: 10px;
+    background: #050101;
+    justify-content: center;
+    color: aliceblue;
+    height: 100px;
+    float: left;
+    width: 100%;
+}
+.Home h2{
+    float: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.Home button{
+    float: right;
+    margin-top: 20px;
+    width: 150px;
+    border-radius: 30px;
+}
