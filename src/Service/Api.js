@@ -4,8 +4,13 @@ const url = "http://localhost:1139";
 
 export const register =async (registrationData) => {
 
-  await axios.post(`${url}/registration`, registrationData);
+  // await axios.post(`${url}/registration`, registrationData);
 
+}
+
+export const login = async (loginDetails) => {
+  console.log(loginDetails)
+  return await axios.post(`${url}/registration`, loginDetails)
 }
 
 export const sellerRegister =async (registrationData) => {

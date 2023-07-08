@@ -29,9 +29,11 @@ const ProductForm = () => {
       price: '',
     });
   };
+const [user] = useState(localStorage.getItem('token'));
 
   return (
-    <form onSubmit={handleSubmit}>
+    user ? (
+      <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="id">ID:</label>
         <input
@@ -86,8 +88,15 @@ const ProductForm = () => {
           required
         />
       </div>
-      <button type="submit">Submit</button>
+  <center> 
+    
+         <button type="submit">Submit</button>
+
+    </center>
     </form>
+    ): (
+      <h1>Login to access this page</h1>
+    )
   );
 };
 

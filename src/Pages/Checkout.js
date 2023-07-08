@@ -88,7 +88,10 @@ const Checkout = () => {
     // Perform your form submission logic here
     // You can access the quantity using `quantity` state
   };
-
+  
+  
+  
+  
   return (
     <div>
       <Div>
@@ -125,8 +128,8 @@ const Checkout = () => {
             <CardLabel htmlFor="payment">Payment Method:</CardLabel>
             <CardSelect id="payment" name="payment" required>
               <option value="">Select payment method</option>
-              <option value="credit">Credit Card</option>
-              <option value="paypal">PayPal</option>
+              <option value="easypaisa">Easypaisa</option>
+              <option value="jazzcash">JazzCash</option>
               <option value="cash">Cash on Delivery</option>
             </CardSelect>
           </div>
