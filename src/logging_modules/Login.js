@@ -6,7 +6,7 @@ import { login } from '../Service/Api';
 const Login = () => {
   const [loginDetails, setLoginDetails] = useState({
     email: '',
-    password: ''
+    password: '',
   });
   const navigate = useNavigate();
 
@@ -14,7 +14,7 @@ const Login = () => {
     const { name, value } = e.target;
     setLoginDetails((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -25,13 +25,12 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     login(loginDetails).then((res) => {
-      localStorage.setItem('token', res.data.token)
-
-    }
-    )
-    navigate('/')
+      console.log(res.data);
+      localStorage.setItem('token', res.data.token);
+      localStorage.setItem('email', res.data.result.email);
+    });
+    navigate('/');
   };
-
 
   return (
     <div className='login'>
@@ -61,7 +60,10 @@ const Login = () => {
           </form>
           <p>
             Don't have an account?
-            <button style={{ width: '200px' }} onClick={handleRegistrationClick}>
+            <button
+              style={{ width: '200px' }}
+              onClick={handleRegistrationClick}
+            >
               Register here
             </button>
           </p>

@@ -1,29 +1,35 @@
 import axios from 'axios';
 
-const url = "http://localhost:1139";
+const API = axios.create({ baseURL: 'http://localhost:1139' });
 
-export const register =async (registrationData) => {
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem('token')) {
+    req.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+    req.headers.email = `${localStorage.getItem('email')}`;
+  }
+  return req;
+});
 
-  // await axios.post(`${url}/registration`, registrationData);
-
-}
+export const register = async (registrationData) => {
+  await API.post('/registration', registrationData);
+};
 
 export const login = async (loginDetails) => {
-  console.log(loginDetails)
-  return await axios.post(`${url}/registration`, loginDetails)
-}
+  console.log(loginDetails);
+  return await API.post('/login', loginDetails);
+};
 
-export const sellerRegister =async (registrationData) => {
+export const sellerRegister = async (registrationData) => {
+  console.log(registrationData);
+  await API.post('/sellerRegistration', registrationData);
+};
 
-  console.log(registrationData)
-    await axios.post(`${url}/sellerRegistration`, registrationData);
-  
-  }
+export const createProduct = async (product) => {
+  console.log('APII');
+  await API.post('/product', product);
+};
 
-export const createProduct= async (product)  => {
-  console.log("APII")
-  await axios.post(`${url}/product`, product)
-}
-// export const fetchData = () => {
-//   axios.get(url); // Replace `url` with a valid URL to fetch data from
-// }
+export const jazzcash = async (data) => {
+  console.log(data);
+  return await API.post('/jazzcash', data);
+};
